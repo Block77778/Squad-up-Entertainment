@@ -33,15 +33,50 @@ export default function Partnerships() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* TerryToto Partnership Card */}
-            <Card border="subtle" className="p-8 hover-lift group">
-              {/* Terry Toto NFT Image */}
-              <div className="mb-6 relative h-80 w-full rounded-lg overflow-hidden">
-                <Image
-                  src="/terry-toto-nft.jpg"
-                  alt="Terry Toto NFT Vanguard"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+            <Card border="subtle" className="p-8 hover-lift group relative overflow-hidden">
+              {/* Glowing background accent */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-transparent pointer-events-none rounded-lg" />
+
+              {/* Owner Avatar + Speech Bubble */}
+              <div className="mb-6 relative flex flex-col items-center">
+                {/* Speech Bubble */}
+                <div
+                  className="relative z-10 mb-[-16px] bg-white text-gray-900 rounded-2xl px-5 py-3 shadow-xl text-sm font-semibold max-w-[280px] text-center border-2 border-gold"
+                  style={{ filter: 'drop-shadow(0 4px 16px rgba(212,175,55,0.25))' }}
+                >
+                  <span className="text-base leading-snug">
+                    "Hey, if you want some cool NFTs like mine head over to{' '}
+                    <span className="text-amber-600 font-bold">Terry Toto</span> site."
+                  </span>
+                  {/* Bubble tail */}
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 bottom-[-12px] w-0 h-0"
+                    style={{
+                      borderLeft: '10px solid transparent',
+                      borderRight: '10px solid transparent',
+                      borderTop: '12px solid #D4AF37',
+                    }}
+                  />
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] w-0 h-0"
+                    style={{
+                      borderLeft: '9px solid transparent',
+                      borderRight: '9px solid transparent',
+                      borderTop: '11px solid white',
+                    }}
+                  />
+                </div>
+
+                {/* Avatar */}
+                <div className="relative w-56 h-72 mt-2 drop-shadow-2xl transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-1">
+                  <Image
+                    src="/squad-up-owner-avatar.png"
+                    alt="Squad Up Gaming Owner"
+                    fill
+                    className="object-contain object-bottom"
+                    style={{ filter: 'drop-shadow(0 8px 32px rgba(212,175,55,0.35))' }}
+                  />
+                </div>
               </div>
 
               <div className="mb-6">
