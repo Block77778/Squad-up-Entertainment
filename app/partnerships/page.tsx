@@ -67,7 +67,7 @@ export default function Partnerships() {
                     style={{ filter: 'drop-shadow(0 4px 16px rgba(212,175,55,0.3))' }}
                   >
                     <span className="leading-snug block">
-                      "TerryToto isn't just gaming — it's music, NFTs, and a whole lot more. Check them out!"
+                      "Hey, if you want some cool NFTs like mine head over to Terry toto site."
                     </span>
                     {/* Tail pointing down toward the character */}
                     <div
