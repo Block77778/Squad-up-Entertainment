@@ -60,8 +60,8 @@ export default function Partnerships() {
                   </span>
                 </div>
 
-                {/* Speech bubble — desktop only */}
-                <div className="hidden md:block absolute top-14 z-20 w-60 left-1/2 -translate-x-1/2">
+                {/* Speech bubble — desktop: absolute over avatar. Mobile: in-flow above avatar */}
+                <div className="relative md:absolute md:top-14 z-20 w-60 md:left-1/2 md:-translate-x-1/2 mx-auto mt-6 md:mt-0">
                   <div
                     className="relative bg-white text-gray-900 rounded-2xl px-4 py-3 shadow-xl text-xs font-semibold text-center border-2 border-gold"
                     style={{ filter: 'drop-shadow(0 4px 16px rgba(212,175,55,0.3))' }}
@@ -116,7 +116,7 @@ export default function Partnerships() {
                   </div>
 
                   <p className="text-text-secondary mb-6 leading-relaxed">
-                    TerryToto.com is far more than a gaming destination — it's a full lifestyle ecosystem spanning <strong className="text-white">gaming, music, NFTs, digital collectibles</strong>, and much more. As a valued Squad Up member, you unlock exclusive access to everything across their entire universe of products and experiences.
+                    TerryToto.com is a full ecosystem spanning <strong className="text-white">gaming, music, NFTs, digital collectibles</strong>, and much more. As a valued Squad Up member, you unlock exclusive access to everything across their entire universe of products and experiences.
                   </p>
 
                   {/* Ecosystem tags */}
