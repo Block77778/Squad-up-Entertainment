@@ -40,7 +40,7 @@ export default function Partnerships() {
             <div className="flex flex-col md:flex-row items-stretch min-h-[520px]">
 
               {/* LEFT: CEO Avatar — stands tall beside the card content */}
-              <div className="relative md:w-72 flex-shrink-0 flex items-end justify-center overflow-hidden">
+              <div className="relative md:w-96 flex-shrink-0 flex items-end justify-center overflow-hidden">
                 {/* Subtle radial glow behind the character */}
                 <div
                   className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full pointer-events-none"
@@ -59,8 +59,8 @@ export default function Partnerships() {
                   </span>
                 </div>
 
-                {/* Speech bubble — points right toward the content */}
-                <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 w-52">
+                {/* Speech bubble — points down toward the character */}
+                <div className="absolute top-14 left-1/2 -translate-x-1/2 z-20 w-60">
                   <div
                     className="relative bg-white text-gray-900 rounded-2xl px-4 py-3 shadow-xl text-xs font-semibold text-center border-2 border-gold"
                     style={{ filter: 'drop-shadow(0 4px 16px rgba(212,175,55,0.3))' }}
@@ -69,29 +69,29 @@ export default function Partnerships() {
                       "Hey, if you want some cool NFTs like mine head over to{' '}
                       <span className="text-amber-600 font-bold">Terry Toto</span> site."
                     </span>
-                    {/* Tail pointing right */}
+                    {/* Tail pointing down toward the character */}
                     <div
-                      className="absolute right-[-12px] top-1/2 -translate-y-1/2 w-0 h-0"
+                      className="absolute left-1/2 -translate-x-1/2 bottom-[-12px] w-0 h-0"
                       style={{
-                        borderTop: '9px solid transparent',
-                        borderBottom: '9px solid transparent',
-                        borderLeft: '12px solid #D4AF37',
+                        borderLeft: '10px solid transparent',
+                        borderRight: '10px solid transparent',
+                        borderTop: '12px solid #D4AF37',
                       }}
                     />
                     <div
-                      className="absolute right-[-10px] top-1/2 -translate-y-1/2 w-0 h-0"
+                      className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] w-0 h-0"
                       style={{
-                        borderTop: '8px solid transparent',
-                        borderBottom: '8px solid transparent',
-                        borderLeft: '11px solid white',
+                        borderLeft: '9px solid transparent',
+                        borderRight: '9px solid transparent',
+                        borderTop: '11px solid white',
                       }}
                     />
                   </div>
                 </div>
 
-                {/* Avatar — full height, no cropping */}
+                {/* Avatar — bigger and closer to the bubble */}
                 <div
-                  className="relative w-64 h-[440px] transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2"
+                  className="relative w-80 h-[500px] transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2"
                   style={{ filter: 'drop-shadow(0 12px 40px rgba(212,175,55,0.4))' }}
                 >
                   <Image
