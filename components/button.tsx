@@ -13,15 +13,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     variant = 'primary', 
     size = 'md',
     glow = 'none',
+    style,
     ...props 
   }, ref) => {
     const baseStyles = 'font-mono uppercase tracking-widest transition-all duration-300 font-semibold rounded-lg relative overflow-hidden hover-lift'
     
     const variants = {
-      primary: 'bg-gradient-to-b from-gray-400 to-gray-500-700 text-white hover:from-gray-400-400 hover:to-gray-500-600 hover:box-glow-purple shadow-xl hover:shadow-2xl active:shadow-lg active:scale-95',
-      secondary: 'bg-gradient-to-b from-teal to-teal-700 text-white hover:from-teal-400 hover:to-teal-600 hover:box-glow-teal shadow-xl hover:shadow-2xl active:shadow-lg active:scale-95',
-      outline: 'border-2 border-gray-400/60 text-white hover:bg-gradient-to-r hover:from-gray-400/20 hover:to-transparent hover:border-gray-400 hover:box-glow-purple',
-      ghost: 'text-white hover:bg-white/10 hover:text-gray-300 hover:box-glow-purple',
+      primary: 'text-white shadow-xl hover:shadow-2xl active:shadow-lg active:scale-95 hover:opacity-90',
+      secondary: 'text-white shadow-xl hover:shadow-2xl active:shadow-lg active:scale-95 hover:opacity-90',
+      outline: 'border-2 text-white hover:opacity-90',
+      ghost: 'text-white hover:bg-white/10',
     }
     
     const sizes = {
@@ -36,6 +37,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       gold: 'text-glow-gold',
       none: '',
     }
+
+    // Inline styles for gradient variants
+    const variantStyles: React.CSSProperties =
+      variant === 'primary'
+        ? { background: 'linear-gradient(to right, #8B5CF6, #10B981)', boxShadow: '0 4px 20px rgba(139,92,246,0.35)' }
+        : variant === 'secondary'
+        ? { background: 'linear-gradient(to right, #10B981, #8B5CF6)', boxShadow: '0 4px 20px rgba(16,185,129,0.35)' }
+        : variant === 'outline'
+        ? { borderImage: 'linear-gradient(to right, #8B5CF6, #10B981)', borderImageSlice: 1 }
+        : {}
     
     return (
       <button
@@ -47,6 +58,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           glows[glow],
           className
         )}
+        style={{ ...variantStyles, ...style }}
         {...props}
       />
     )
