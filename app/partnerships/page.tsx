@@ -29,7 +29,7 @@ export default function Partnerships() {
               OUR PARTNERS
             </span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-black mb-4 leading-tight text-white">
+          <h1 className="text-5xl md:text-7xl font-serif font-black mb-4 leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
             Strategic Partnerships
           </h1>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
@@ -103,14 +103,17 @@ export default function Partnerships() {
             {/* ── DESKTOP layout: avatar left, content right ── */}
             <div className="relative z-10 hidden md:flex flex-row items-stretch min-h-[560px]">
 
-              {/* LEFT: CEO column */}
+              {/* LEFT: CEO column — in-flow flex, no absolute for label/bubble */}
               <div className="relative w-96 flex-shrink-0 flex flex-col items-center justify-end overflow-hidden">
                 {/* radial glow */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full pointer-events-none"
                   style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.22) 0%, transparent 70%)' }} />
 
-                {/* CEO label — absolute at top, centred */}
-                <div className="absolute top-6 left-0 right-0 flex justify-center z-20">
+                {/* Spacer pushes label+bubble+avatar to bottom */}
+                <div className="flex-1" />
+
+                {/* CEO label — in flow */}
+                <div className="flex justify-center z-20 mb-3">
                   <span
                     className="text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full text-white font-bold"
                     style={{ background: GRADIENT, boxShadow: '0 2px 12px rgba(139,92,246,0.4)' }}
@@ -119,23 +122,21 @@ export default function Partnerships() {
                   </span>
                 </div>
 
-                {/* Speech bubble — absolute, centred horizontally */}
-                <div className="absolute top-16 left-0 right-0 flex justify-center z-20">
-                  <div className="w-60">
-                    <div
-                      className="relative bg-white text-gray-900 rounded-2xl px-4 py-3 shadow-xl text-xs font-semibold text-center border-2"
-                      style={{ borderColor: '#8B5CF6', filter: 'drop-shadow(0 4px 16px rgba(139,92,246,0.35))' }}
-                    >
-                      <span className="leading-snug block">
-                        "Hey, if you want some cool NFTs like mine head over to{' '}
-                        <span className="text-violet-600 font-bold">Terry Toto</span> site."
-                      </span>
-                      {/* tail pointing down */}
-                      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-12px] w-0 h-0"
-                        style={{ borderLeft:'10px solid transparent', borderRight:'10px solid transparent', borderTop:'12px solid #8B5CF6' }} />
-                      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] w-0 h-0"
-                        style={{ borderLeft:'9px solid transparent', borderRight:'9px solid transparent', borderTop:'11px solid white' }} />
-                    </div>
+                {/* Speech bubble — in flow, directly above avatar */}
+                <div className="flex justify-center z-20 w-60 mb-2">
+                  <div
+                    className="relative w-full bg-white text-gray-900 rounded-2xl px-4 py-3 shadow-xl text-xs font-semibold text-center border-2"
+                    style={{ borderColor: '#8B5CF6', filter: 'drop-shadow(0 4px 16px rgba(139,92,246,0.35))' }}
+                  >
+                    <span className="leading-snug block">
+                      "Hey, if you want some cool NFTs like mine head over to{' '}
+                      <span className="text-violet-600 font-bold">Terry Toto</span> site."
+                    </span>
+                    {/* tail pointing down */}
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-[-12px] w-0 h-0"
+                      style={{ borderLeft:'10px solid transparent', borderRight:'10px solid transparent', borderTop:'12px solid #8B5CF6' }} />
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] w-0 h-0"
+                      style={{ borderLeft:'9px solid transparent', borderRight:'9px solid transparent', borderTop:'11px solid white' }} />
                   </div>
                 </div>
 
@@ -158,7 +159,7 @@ export default function Partnerships() {
           {/* More Partners */}
           <Card border="subtle" className="p-8 hover-lift flex items-center justify-center min-h-[180px]">
             <div className="text-center">
-              <h2 className="text-2xl font-serif font-bold text-white mb-4">More Partners Coming Soon</h2>
+              <h2 className="text-2xl font-serif font-bold bg-clip-text text-transparent mb-4" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>More Partners Coming Soon</h2>
               <p className="text-text-secondary mb-6">
                 We're constantly expanding our partnership network to bring you the best deals and exclusive offers from top gaming brands.
               </p>
@@ -177,7 +178,7 @@ export default function Partnerships() {
       <section className="py-20 px-4 md:px-8 bg-card/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold text-white mb-4">Why Partner With Squad Up?</h2>
+            <h2 className="text-4xl font-serif font-bold bg-clip-text text-transparent mb-4" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>Why Partner With Squad Up?</h2>
             <p className="text-lg text-text-secondary max-w-2xl mx-auto">
               Our community of dedicated gamers represents a premium target audience for brands in the gaming and esports space.
             </p>
@@ -213,7 +214,7 @@ function ContentBody() {
   return (
     <>
       <div className="mb-6">
-        <h2 className="text-4xl font-serif font-bold text-white mb-2">TerryToto.com</h2>
+        <h2 className="text-4xl font-serif font-bold bg-clip-text text-transparent mb-2" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>TerryToto.com</h2>
         <span
           className="inline-block text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full text-white font-bold"
           style={{ background: GRADIENT }}
