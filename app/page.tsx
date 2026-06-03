@@ -86,7 +86,7 @@ export default function Home() {
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto animate-slide-up">
-          <h1 className="text-5xl md:text-8xl font-serif font-black mb-6 leading-tight tracking-tighter uppercase text-white">
+          <h1 className="text-5xl md:text-8xl font-serif font-black mb-6 leading-tight tracking-tighter uppercase bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
             <TypingText text="Level Up Your Gaming" typingSpeed={60} wordDelay={100} />
           </h1>
           
@@ -118,7 +118,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-slide-up">
             <Badge variant="purple" className="mb-4">OUR PLATFORM</Badge>
-            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-pretty leading-tight">
+            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-pretty leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
               <span className="text-gradient-purple">Everything for the Competitive Gamer</span>
             </h2>
             <p className="text-lg text-text-secondary max-w-3xl mx-auto leading-relaxed">
@@ -157,7 +157,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <Badge variant="teal" className="mb-4">WHY SQUAD UP</Badge>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-pretty">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-pretty bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
               Built for Gamers, by Gamers
             </h2>
           </div>
@@ -208,7 +208,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 animate-slide-up">
             <Badge variant="gold" className="mb-4">THIS WEEK</Badge>
-            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-pretty leading-tight">
+            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-pretty leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
               <span className="text-gradient-gold">Games of the Week</span>
             </h2>
             <p className="text-xl text-text-secondary">
@@ -274,7 +274,7 @@ export default function Home() {
         <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-teal/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none animate-float" style={{ animationDelay: '-2s' }} />
         
         <div className="max-w-3xl mx-auto text-center relative z-10 animate-slide-up">
-          <h2 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-balance leading-tight">
+          <h2 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-balance leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
             <span className="text-gradient-purple">Ready to Squad Up?</span>
           </h2>
           <p className="text-xl text-text-secondary mb-12 leading-relaxed">
