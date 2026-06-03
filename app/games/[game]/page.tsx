@@ -128,7 +128,7 @@ export default function GamePage() {
         
         {/* Content */}
         <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-8xl font-serif font-black mb-6 leading-tight tracking-tighter uppercase text-white">
+          <h1 className="text-5xl md:text-8xl font-serif font-black mb-6 leading-tight tracking-tighter uppercase bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
             {data.title}
           </h1>
           
@@ -144,7 +144,7 @@ export default function GamePage() {
       <section className="py-16 md:py-24 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <Badge variant={data.glowColor} className="mb-4">THIS WEEK</Badge>
-          <h2 className="text-4xl font-serif font-bold mb-8 text-white">
+          <h2 className="text-4xl font-serif font-bold mb-8 bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
             {data.tournament}
           </h2>
 
@@ -190,7 +190,7 @@ export default function GamePage() {
       <section className="py-16 md:py-24 px-4 md:px-8 bg-card/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold text-white mb-4">
+            <h2 className="text-4xl font-serif font-bold bg-clip-text text-transparent mb-4" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
               What We Offer
             </h2>
             <p className="text-lg text-text-secondary">
@@ -206,7 +206,7 @@ export default function GamePage() {
       <section className="py-16 md:py-24 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold text-white mb-4">
+            <h2 className="text-4xl font-serif font-bold bg-clip-text text-transparent mb-4" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
               How to Compete
             </h2>
           </div>
@@ -253,7 +253,7 @@ export default function GamePage() {
       {/* CTA Section */}
       <section className="py-16 md:py-24 px-4 md:px-8 bg-card/30">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-serif font-bold mb-4 text-white">
+          <h2 className="text-4xl font-serif font-bold mb-4 bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
             Ready to Compete?
           </h2>
           <p className="text-lg text-text-secondary mb-8">
