@@ -49,9 +49,12 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
         
         {/* Content */}
         <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto animate-slide-up">
-          <h1 className={cn(
-            'text-5xl md:text-8xl font-serif font-black mb-6 leading-tight tracking-tighter uppercase text-white'
-          )}>
+          <h1
+            className={cn(
+              'text-5xl md:text-8xl font-serif font-black mb-6 leading-tight tracking-tighter uppercase bg-clip-text text-transparent'
+            )}
+            style={{ backgroundImage: 'linear-gradient(to right, #a78bfa, #34d399)' }}
+          >
             <TypingText text={title.toUpperCase()} typingSpeed={60} wordDelay={100} />
           </h1>
           
