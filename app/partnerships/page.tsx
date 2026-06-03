@@ -104,8 +104,8 @@ export default function Partnerships() {
             {/* ── DESKTOP layout: CSS grid so CEO is always bottom-pinned ── */}
             <div className="relative z-10 hidden md:grid" style={{ gridTemplateColumns: '420px 1fr' }}>
 
-              {/* LEFT: CEO column — flex col, content naturally stacked at bottom via justify-end */}
-              <div className="relative flex flex-col justify-end items-center">
+              {/* LEFT: CEO column — centred vertically */}
+              <div className="relative flex flex-col justify-center items-center py-8">
                 {/* radial glow */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full pointer-events-none"
                   style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.22) 0%, transparent 70%)' }} />
