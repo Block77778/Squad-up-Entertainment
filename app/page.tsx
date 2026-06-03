@@ -17,18 +17,21 @@ export default function Home() {
   const platformTiles = [
     {
       title: 'Squad Stream',
+      href: '/squad-stream',
       description: 'Live tournaments, streams, and community moments',
       icon: '🎬',
       color: 'purple',
     },
     {
       title: 'Squad Tracks',
+      href: '/squad-tracks',
       description: 'Discover and share gaming music from our creators',
       icon: '🎵',
       color: 'teal',
     },
     {
       title: 'Contests',
+      href: '/contests',
       description: 'Compete for prizes and climb the leaderboards',
       icon: '🏆',
       color: 'gold',
@@ -45,18 +48,21 @@ export default function Home() {
   const gameWeekCards = [
     {
       game: 'Madden 25',
+      href: '/games/madden',
       tournament: 'NFL Championship',
       prize: '$50K',
       participants: '256',
     },
     {
       game: 'Call of Duty',
+      href: '/games/cod',
       tournament: 'Global Clash',
       prize: '$75K',
       participants: '512',
     },
     {
       game: 'NBA 2K',
+      href: '/games/nba-2k',
       tournament: 'Pro Circuit',
       prize: '$100K',
       participants: '1024',
@@ -143,9 +149,11 @@ export default function Home() {
                 <p className="text-text-muted mb-6 leading-relaxed">
                   {tile.description}
                 </p>
-                <Button variant="ghost" size="sm" className="group-hover:text-gray-300">
-                  Explore →
-                </Button>
+                <Link href={tile.href}>
+                  <Button variant="ghost" size="sm" className="group-hover:text-gray-300">
+                    Explore →
+                  </Button>
+                </Link>
               </Card>
             ))}
           </div>
@@ -249,9 +257,11 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <Button variant="secondary" size="md" className="w-full group-hover:shadow-xl transition-all">
-                    Register Now
-                  </Button>
+                  <Link href={card.href}>
+                    <Button variant="secondary" size="md" className="w-full group-hover:shadow-xl transition-all">
+                      Register Now
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             ))}
@@ -281,12 +291,16 @@ export default function Home() {
             Join thousands of competitive gamers competing for glory and rewards on the ultimate gaming platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg" glow="purple">
-              Get Started Today
-            </Button>
-            <Button variant="outline" size="lg">
-              Learn More
-            </Button>
+            <Link href="/contact">
+              <Button variant="primary" size="lg" glow="purple">
+                Get Started Today
+              </Button>
+            </Link>
+            <Link href="/about">
+              <Button variant="outline" size="lg">
+                Learn More
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
