@@ -4,6 +4,7 @@ import { Layout } from '@/components/layout'
 import { Card } from '@/components/card'
 import { Badge } from '@/components/badge'
 import { Button } from '@/components/button'
+import { TypingText } from '@/components/typing-text'
 
 export const metadata = {
   title: 'Partnerships - Squad Up Gaming',
@@ -30,7 +31,7 @@ export default function Partnerships() {
             </span>
           </div>
           <h1 className="text-5xl md:text-7xl font-serif font-black mb-4 leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
-            Strategic Partnerships
+            <TypingText text="Strategic Partnerships" typingSpeed={60} wordDelay={100} />
           </h1>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
             Exclusive benefits and discounts for Squad Up members through our trusted partner network.
@@ -104,7 +105,7 @@ export default function Partnerships() {
             <div className="relative z-10 hidden md:flex flex-row items-stretch min-h-[560px]">
 
               {/* LEFT: CEO column — in-flow flex, no absolute for label/bubble */}
-              <div className="relative w-96 flex-shrink-0 flex flex-col items-center justify-end overflow-hidden">
+              <div className="relative w-96 flex-shrink-0 flex flex-col items-center overflow-hidden">
                 {/* radial glow */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full pointer-events-none"
                   style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.22) 0%, transparent 70%)' }} />
