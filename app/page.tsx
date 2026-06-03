@@ -119,7 +119,7 @@ export default function Home() {
           <div className="text-center mb-16 animate-slide-up">
             <Badge variant="purple" className="mb-4">OUR PLATFORM</Badge>
             <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-pretty leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
-              <span className="text-gradient-purple">Everything for the Competitive Gamer</span>
+              Everything for the Competitive Gamer
             </h2>
             <p className="text-lg text-text-secondary max-w-3xl mx-auto leading-relaxed">
               From streaming and tournaments to music discovery and token rewards, Squad Up is your all-in-one gaming ecosystem.
@@ -209,7 +209,7 @@ export default function Home() {
           <div className="text-center mb-16 animate-slide-up">
             <Badge variant="gold" className="mb-4">THIS WEEK</Badge>
             <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-pretty leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
-              <span className="text-gradient-gold">Games of the Week</span>
+              Games of the Week
             </h2>
             <p className="text-xl text-text-secondary">
               Premium tournaments with the highest prize pools
@@ -275,7 +275,7 @@ export default function Home() {
         
         <div className="max-w-3xl mx-auto text-center relative z-10 animate-slide-up">
           <h2 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-balance leading-tight bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #a78bfa, #34d399)" }}>
-            <span className="text-gradient-purple">Ready to Squad Up?</span>
+            Ready to Squad Up?
           </h2>
           <p className="text-xl text-text-secondary mb-12 leading-relaxed">
             Join thousands of competitive gamers competing for glory and rewards on the ultimate gaming platform.
