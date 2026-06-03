@@ -49,10 +49,10 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="nav-label text-xs text-white/70 hover:text-gray-200 hover:text-glow-purple transition-all duration-300 relative group"
+                className="nav-label text-xs text-white/70 hover:text-white transition-all duration-300 relative group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-gray-400 to-transparent group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ background: 'linear-gradient(to right, #8B5CF6, #10B981)' }} />
               </Link>
             ))}
             
@@ -80,9 +80,11 @@ export function Nav() {
           
           {/* CTA Button - Desktop */}
           <div className="hidden md:block">
-            <Button variant="primary" size="sm" glow="purple">
-              Join Now
-            </Button>
+            <Link href="/contact">
+              <Button variant="primary" size="sm" glow="purple">
+                Join Now
+              </Button>
+            </Link>
           </div>
           
           {/* Mobile Menu Button */}
@@ -137,9 +139,11 @@ export function Nav() {
             </div>
             
             <div className="px-4 py-3">
-              <Button variant="primary" size="sm" glow="purple" className="w-full">
-                Join Now
-              </Button>
+              <Link href="/contact">
+                <Button variant="primary" size="sm" glow="purple" className="w-full">
+                  Join Now
+                </Button>
+              </Link>
             </div>
           </div>
         )}
