@@ -102,48 +102,45 @@ export default function Partnerships() {
             </div>
 
             {/* ── DESKTOP layout: avatar left, content right ── */}
-            <div className="relative z-10 hidden md:flex flex-row items-stretch min-h-[560px]">
+            <div className="relative z-10 hidden md:flex flex-row items-end">
 
-              {/* LEFT: CEO column — in-flow flex, no absolute for label/bubble */}
-              <div className="relative w-96 flex-shrink-0 flex flex-col items-center overflow-hidden">
+              {/* LEFT: CEO column — tightly packed, no spacer, anchored to bottom */}
+              <div className="relative w-[420px] flex-shrink-0 flex flex-col items-center pb-0">
                 {/* radial glow */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full pointer-events-none"
                   style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.22) 0%, transparent 70%)' }} />
 
-                {/* Spacer pushes label+bubble+avatar to bottom */}
-                <div className="flex-1" />
-
-                {/* CEO label — in flow */}
-                <div className="flex justify-center z-20 mb-3">
+                {/* CEO label */}
+                <div className="flex justify-center z-20 mb-3 mt-8">
                   <span
-                    className="text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full text-white font-bold"
+                    className="text-sm font-mono uppercase tracking-widest px-4 py-1.5 rounded-full text-white font-bold"
                     style={{ background: GRADIENT, boxShadow: '0 2px 12px rgba(139,92,246,0.4)' }}
                   >
                     Squad Up CEO
                   </span>
                 </div>
 
-                {/* Speech bubble — in flow, directly above avatar */}
-                <div className="flex justify-center z-20 w-60 mb-2">
+                {/* Speech bubble — bigger on desktop */}
+                <div className="flex justify-center z-20 w-72 mb-3">
                   <div
-                    className="relative w-full bg-white text-gray-900 rounded-2xl px-4 py-3 shadow-xl text-xs font-semibold text-center border-2"
-                    style={{ borderColor: '#8B5CF6', filter: 'drop-shadow(0 4px 16px rgba(139,92,246,0.35))' }}
+                    className="relative w-full bg-white text-gray-900 rounded-2xl px-5 py-4 shadow-xl text-sm font-semibold text-center border-2"
+                    style={{ borderColor: '#8B5CF6', filter: 'drop-shadow(0 4px 20px rgba(139,92,246,0.4))' }}
                   >
                     <span className="leading-snug block">
                       "Hey, if you want some cool NFTs like mine head over to{' '}
                       <span className="text-violet-600 font-bold">Terry Toto</span> site."
                     </span>
                     {/* tail pointing down */}
-                    <div className="absolute left-1/2 -translate-x-1/2 bottom-[-12px] w-0 h-0"
-                      style={{ borderLeft:'10px solid transparent', borderRight:'10px solid transparent', borderTop:'12px solid #8B5CF6' }} />
-                    <div className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] w-0 h-0"
-                      style={{ borderLeft:'9px solid transparent', borderRight:'9px solid transparent', borderTop:'11px solid white' }} />
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-[-13px] w-0 h-0"
+                      style={{ borderLeft:'11px solid transparent', borderRight:'11px solid transparent', borderTop:'13px solid #8B5CF6' }} />
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-[-11px] w-0 h-0"
+                      style={{ borderLeft:'10px solid transparent', borderRight:'10px solid transparent', borderTop:'12px solid white' }} />
                   </div>
                 </div>
 
-                {/* Avatar */}
+                {/* Avatar — bigger on desktop */}
                 <div
-                  className="relative w-80 h-[500px] transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2"
+                  className="relative w-[380px] h-[580px] transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2"
                   style={{ filter: 'drop-shadow(0 12px 40px rgba(139,92,246,0.45))' }}
                 >
                   <Image src="/squad-up-owner-avatar.png" alt="Squad Up Gaming CEO" fill className="object-contain object-bottom" />
@@ -151,7 +148,7 @@ export default function Partnerships() {
               </div>
 
               {/* RIGHT: content */}
-              <div className="flex-1 p-8 flex flex-col justify-between border-l border-white/10">
+              <div className="flex-1 p-8 flex flex-col justify-between border-l border-white/10 self-stretch">
                 <DesktopContent />
               </div>
             </div>
