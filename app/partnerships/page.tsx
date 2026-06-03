@@ -101,17 +101,17 @@ export default function Partnerships() {
               </div>
             </div>
 
-            {/* ── DESKTOP layout: avatar left, content right ── */}
-            <div className="relative z-10 hidden md:flex flex-row items-end">
+            {/* ── DESKTOP layout: CSS grid so CEO is always bottom-pinned ── */}
+            <div className="relative z-10 hidden md:grid" style={{ gridTemplateColumns: '420px 1fr' }}>
 
-              {/* LEFT: CEO column — tightly packed, no spacer, anchored to bottom */}
-              <div className="relative w-[420px] flex-shrink-0 flex flex-col items-center pb-0">
+              {/* LEFT: CEO column — flex col, content naturally stacked at bottom via justify-end */}
+              <div className="relative flex flex-col justify-end items-center">
                 {/* radial glow */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full pointer-events-none"
                   style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.22) 0%, transparent 70%)' }} />
 
                 {/* CEO label */}
-                <div className="flex justify-center z-20 mb-3 mt-8">
+                <div className="flex justify-center z-20 mb-3">
                   <span
                     className="text-sm font-mono uppercase tracking-widest px-4 py-1.5 rounded-full text-white font-bold"
                     style={{ background: GRADIENT, boxShadow: '0 2px 12px rgba(139,92,246,0.4)' }}
@@ -148,7 +148,7 @@ export default function Partnerships() {
               </div>
 
               {/* RIGHT: content */}
-              <div className="flex-1 p-8 flex flex-col justify-between border-l border-white/10 self-stretch">
+              <div className="flex-1 p-8 flex flex-col justify-between border-l border-white/10">
                 <DesktopContent />
               </div>
             </div>
