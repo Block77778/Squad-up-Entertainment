@@ -80,10 +80,12 @@ export function Nav() {
           
           {/* CTA Button - Desktop */}
           <div className="hidden md:block">
-            <Link href="/contact">
-              <Button variant="primary" size="sm" glow="purple">
-                Join Now
-              </Button>
+            <Link
+              href="/contact"
+              className="font-mono uppercase tracking-widest text-white text-xs px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+              style={{ background: 'linear-gradient(to right, #8B5CF6, #10B981)', boxShadow: '0 4px 20px rgba(139,92,246,0.35)' }}
+            >
+              Join Now
             </Link>
           </div>
           
@@ -139,10 +141,13 @@ export function Nav() {
             </div>
             
             <div className="px-4 py-3">
-              <Link href="/contact">
-                <Button variant="primary" size="sm" glow="purple" className="w-full">
-                  Join Now
-                </Button>
+              <Link
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-center font-mono uppercase tracking-widest text-white text-xs px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:opacity-90"
+                style={{ background: 'linear-gradient(to right, #8B5CF6, #10B981)', boxShadow: '0 4px 20px rgba(139,92,246,0.35)' }}
+              >
+                Join Now
               </Link>
             </div>
           </div>
