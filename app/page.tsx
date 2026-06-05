@@ -291,7 +291,7 @@ export default function Home() {
             Join thousands of competitive gamers competing for glory and rewards on the ultimate gaming platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
+            <Link href="/sign-up">
               <Button variant="primary" size="lg" glow="purple">
                 Get Started Today
               </Button>
