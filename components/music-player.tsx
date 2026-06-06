@@ -17,21 +17,39 @@ export function MusicPlayer() {
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
-    // Attempt autoplay — browsers may block it until user interacts
+
+    const tryPlay = () => {
+      audio.play().then(() => setIsPlaying(true)).catch(() => {})
+    }
+
+    // Attempt immediately
     audio.play().then(() => {
       setIsPlaying(true)
     }).catch(() => {
-      // Blocked by browser policy — wait for first interaction then play
       setIsPlaying(false)
-      const playOnInteraction = () => {
-        audio.play().then(() => setIsPlaying(true)).catch(() => {})
-        document.removeEventListener('click', playOnInteraction)
-        document.removeEventListener('keydown', playOnInteraction)
-        document.removeEventListener('touchstart', playOnInteraction)
+
+      // Mobile requires touchend specifically (touchstart is too early)
+      const unlock = () => {
+        // Create and resume an AudioContext to unlock mobile audio
+        try {
+          const AudioContext = window.AudioContext || (window as any).webkitAudioContext
+          if (AudioContext) {
+            const ctx = new AudioContext()
+            ctx.resume().then(() => tryPlay())
+          } else {
+            tryPlay()
+          }
+        } catch {
+          tryPlay()
+        }
+        document.removeEventListener('touchend', unlock)
+        document.removeEventListener('click', unlock)
+        document.removeEventListener('keydown', unlock)
       }
-      document.addEventListener('click', playOnInteraction)
-      document.addEventListener('keydown', playOnInteraction)
-      document.addEventListener('touchstart', playOnInteraction)
+
+      document.addEventListener('touchend', unlock, { passive: true })
+      document.addEventListener('click', unlock)
+      document.addEventListener('keydown', unlock)
     })
   }, [])
 
