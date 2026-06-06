@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Barlow, Exo_2, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { AuthProvider } from '@/components/auth-provider'
 import { MusicPlayer } from '@/components/music-player'
 import './globals.css'
 
@@ -46,10 +45,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background">
       <body className={`${barlow.variable} ${exo2.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        <AuthProvider>
           {children}
           <MusicPlayer />
-        </AuthProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
