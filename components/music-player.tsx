@@ -7,12 +7,33 @@ const GRADIENT_BG = 'linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(16,1
 
 export function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
   const [isExpanded, setIsExpanded] = useState(false)
   const [progress, setProgress] = useState(0)
   const [duration, setDuration] = useState(0)
   const [volume, setVolume] = useState(0.6)
   const [isMuted, setIsMuted] = useState(false)
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+    // Attempt autoplay — browsers may block it until user interacts
+    audio.play().then(() => {
+      setIsPlaying(true)
+    }).catch(() => {
+      // Blocked by browser policy — wait for first interaction then play
+      setIsPlaying(false)
+      const playOnInteraction = () => {
+        audio.play().then(() => setIsPlaying(true)).catch(() => {})
+        document.removeEventListener('click', playOnInteraction)
+        document.removeEventListener('keydown', playOnInteraction)
+        document.removeEventListener('touchstart', playOnInteraction)
+      }
+      document.addEventListener('click', playOnInteraction)
+      document.addEventListener('keydown', playOnInteraction)
+      document.addEventListener('touchstart', playOnInteraction)
+    })
+  }, [])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -76,7 +97,7 @@ export function MusicPlayer() {
 
   return (
     <>
-      <audio ref={audioRef} src="/squad-up-track.mpeg" preload="metadata" loop />
+      <audio ref={audioRef} src="/squad-up-track.mpeg" preload="auto" loop autoPlay />
 
       {/* Floating Player */}
       <div
