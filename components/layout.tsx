@@ -1,7 +1,6 @@
 import React from 'react'
 import { Nav } from './nav'
 import { Footer } from './footer'
-import { MusicPlayer } from './music-player'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,7 +10,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
-      <MusicPlayer />
     </div>
   )
 }
