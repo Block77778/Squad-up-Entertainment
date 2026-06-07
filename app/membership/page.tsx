@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { MembershipCTA } from '@/components/membership-cta'
 import { Layout } from '@/components/layout'
 import { Card } from '@/components/card'
 import { Badge } from '@/components/badge'
