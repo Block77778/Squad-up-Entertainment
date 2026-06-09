@@ -32,6 +32,7 @@ export function Nav() {
     { href: '/games/madden', label: 'Madden' },
     { href: '/games/cod', label: 'Call of Duty' },
     { href: '/games/nba-2k', label: 'NBA 2K' },
+    { href: '/games/fifa', label: 'FIFA' },
   ]
 
   const username = 'Player'
