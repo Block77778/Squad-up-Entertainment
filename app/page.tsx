@@ -77,7 +77,7 @@ export default function Home() {
   ]
 
   const carouselImages = [
-    { src: '/squad-up-gang.jpeg', alt: 'Squad Up Gang - Level Up Together' },
+    { src: '/squad-up-gang.jpeg', alt: 'Squad Up Gang - Level Up Together', objectPosition: 'center bottom' },
     { src: '/cod-bg.jpg', alt: 'Call of Duty - Competitive Gaming' },
     { src: '/madden-bg.jpg', alt: 'Madden NFL - American Football' },
     { src: '/nba-bg.jpg', alt: 'NBA 2K - Basketball' },
