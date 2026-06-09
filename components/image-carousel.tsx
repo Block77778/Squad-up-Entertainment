@@ -8,6 +8,7 @@ interface ImageCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
   images: Array<{
     src: string
     alt: string
+    objectPosition?: string
   }>
   interval?: number
   autoPlay?: boolean
@@ -51,6 +52,7 @@ export function ImageCarousel({
             alt={image.alt}
             fill
             className="object-cover"
+            style={{ objectPosition: image.objectPosition || 'center' }}
             priority={index === 0}
           />
         </div>
