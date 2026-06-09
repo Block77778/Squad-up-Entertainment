@@ -87,17 +87,18 @@ export default function FifaPage() {
 
       {/* Hero */}
       <div className="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #0a0f1a 0%, #0d1a0d 50%, #0a0f1a 100%)' }}>
-          {/* Green pitch lines */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-emerald-400" />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-emerald-400" />
-            <div className="absolute top-0 bottom-0 left-0 w-1/4 border-r border-emerald-400 opacity-50" />
-            <div className="absolute top-0 bottom-0 right-0 w-1/4 border-l border-emerald-400 opacity-50" />
-          </div>
-          {/* Gradient overlay */}
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.12) 0%, rgba(0,0,0,0.6) 70%)' }} />
+        {/* Stadium background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/fifa-bg.jpg"
+            alt="FIFA Stadium"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, rgba(0,0,0,0.3) 70%)' }} />
         </div>
 
         <div className="relative z-10 text-center px-4 md:px-8 max-w-5xl mx-auto py-24">
