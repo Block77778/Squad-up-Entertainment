@@ -67,9 +67,17 @@ export default function Home() {
       prize: '$100K',
       participants: '1024',
     },
+    {
+      game: 'FIFA',
+      href: '/games/fifa',
+      tournament: 'Global Cup',
+      prize: '$60K',
+      participants: '512',
+    },
   ]
 
   const carouselImages = [
+    { src: '/squad-up-gang.jpeg', alt: 'Squad Up Gang - Level Up Together' },
     { src: '/cod-bg.jpg', alt: 'Call of Duty - Competitive Gaming' },
     { src: '/madden-bg.jpg', alt: 'Madden NFL - American Football' },
     { src: '/nba-bg.jpg', alt: 'NBA 2K - Basketball' },
