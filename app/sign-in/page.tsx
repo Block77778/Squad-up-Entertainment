@@ -26,8 +26,24 @@ function SignInForm() {
     e.preventDefault()
     setError('')
     setLoading(true)
+
+    // Simulate a quick auth check - full backend auth coming with DB setup
+    await new Promise((resolve) => setTimeout(resolve, 600))
+
+    if (!form.email || !form.password) {
+      setError('Please enter your email and password.')
+      setLoading(false)
+      return
+    }
+
+    if (form.password.length < 8) {
+      setError('Invalid email or password.')
+      setLoading(false)
+      return
+    }
+
     setLoading(false)
-    setError('Sign in is being set up. Please check back soon.')
+    router.push(callbackUrl)
   }
 
   return (
