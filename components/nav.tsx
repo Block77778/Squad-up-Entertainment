@@ -1,19 +1,18 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
+import { useAuth } from '@/hooks/use-auth'
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false)
   const [isGameDropdownOpen, setIsGameDropdownOpen] = useState(false)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
-  // Auth will be enabled once next-auth is installed via pnpm
-  const session = null
-  const isLoggedIn = false
+  const { user, isLoggedIn, signOut } = useAuth()
+  const username = user?.username || 'Player'
+  const tier = user?.membershipTier || 'free'
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -116,7 +115,7 @@ export function Nav() {
                     </Link>
                     <div className="border-t border-white/10 mt-1 pt-1">
                       <button
-                        onClick={() => { /* signOut */ }}
+                        onClick={() => signOut()}
                         className="block w-full text-left px-4 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/5 transition-all"
                       >
                         Sign Out
@@ -197,7 +196,7 @@ export function Nav() {
             <div className="px-4 pt-2 pb-2 border-t border-white/10 mt-2">
               {isLoggedIn ? (
                 <button
-                  onClick={() => { setIsOpen(false) }}
+                  onClick={() => { signOut(); setIsOpen(false) }}
                   className="w-full font-mono uppercase tracking-widest text-red-400 text-xs py-3 rounded-lg font-bold border border-red-500/20 hover:bg-red-500/5 transition-all"
                 >
                   Sign Out
