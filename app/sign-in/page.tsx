@@ -6,15 +6,15 @@ import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Layout } from '@/components/layout'
 import { Card } from '@/components/card'
+import { useAuth } from '@/hooks/use-auth'
 
 const GRADIENT = 'linear-gradient(to right, #8B5CF6, #10B981)'
-const GRADIENT_BG = 'linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(16,185,129,0.10) 100%)'
 
-// Inner component uses useSearchParams — must be inside Suspense
 function SignInForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackUrl') || '/'
+  const { signIn } = useAuth()
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -25,25 +25,43 @@ function SignInForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    setLoading(true)
-
-    // Simulate a quick auth check - full backend auth coming with DB setup
-    await new Promise((resolve) => setTimeout(resolve, 600))
 
     if (!form.email || !form.password) {
       setError('Please enter your email and password.')
-      setLoading(false)
+      return
+    }
+    if (form.password.length < 8) {
+      setError('Password must be at least 8 characters.')
       return
     }
 
-    if (form.password.length < 8) {
+    setLoading(true)
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
+    // Check if user registered in this session
+    const stored = localStorage.getItem('squadup_registrations')
+    const registrations = stored ? JSON.parse(stored) : []
+    const match = registrations.find(
+      (r: any) => r.email.toLowerCase() === form.email.toLowerCase() && r.password === form.password
+    )
+
+    if (!match && registrations.length > 0) {
       setError('Invalid email or password.')
       setLoading(false)
       return
     }
 
-    setLoading(false)
+    // Sign in — use registered data if found, otherwise use email as username
+    signIn({
+      username: match?.username || form.email.split('@')[0],
+      email: form.email,
+      firstName: match?.firstName || '',
+      lastName: match?.lastName || '',
+      membershipTier: 'free',
+    })
+
     router.push(callbackUrl)
+    router.refresh()
   }
 
   return (
@@ -97,7 +115,6 @@ function SignInForm() {
   )
 }
 
-// Outer page wraps in Suspense to satisfy Next.js static generation
 export default function SignIn() {
   return (
     <Layout>
