@@ -60,8 +60,8 @@ function SignInForm() {
       membershipTier: 'free',
     })
 
-    router.push(callbackUrl)
-    router.refresh()
+    // Use window.location for a clean full-page navigation so nav re-reads localStorage
+    window.location.href = callbackUrl
   }
 
   return (
