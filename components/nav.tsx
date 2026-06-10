@@ -1,16 +1,16 @@
 'use client'
 
-
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { cn } from '@/lib/utils'
 import { useAuth } from '@/hooks/use-auth'
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false)
   const [isGameDropdownOpen, setIsGameDropdownOpen] = useState(false)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
-  const { user, isLoggedIn, signOut } = useAuth()
+  const { user, isLoggedIn, signOut, loading } = useAuth()
   const username = user?.username || 'Player'
   const tier = user?.membershipTier || 'free'
 
@@ -51,7 +51,7 @@ export function Nav() {
             <Image src="/squad-up-logo.png" alt="Squad Up Gaming Logo" width={50} height={50} className="w-12 h-12 object-contain" />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop nav links */}
           <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}
@@ -61,7 +61,6 @@ export function Nav() {
                   style={{ background: 'linear-gradient(to right, #8B5CF6, #10B981)' }} />
               </Link>
             ))}
-
             {/* Games dropdown */}
             <div className="relative group">
               <button className="nav-label text-xs text-white/70 hover:text-white transition-all duration-300 flex items-center gap-1">
@@ -80,17 +79,18 @@ export function Nav() {
             </div>
           </div>
 
-          {/* Right side — auth */}
+          {/* Desktop auth */}
           <div className="hidden md:flex items-center gap-3">
-            {isLoggedIn ? (
+            {loading ? (
+              /* Skeleton while localStorage loads */
+              <div className="w-24 h-9 rounded-lg animate-pulse" style={{ background: 'rgba(255,255,255,0.05)' }} />
+            ) : isLoggedIn ? (
               <div className="relative">
                 <button
                   onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
                   onBlur={() => setTimeout(() => setIsUserDropdownOpen(false), 150)}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg border border-white/10 hover:border-white/20 transition-all"
-                  style={{ background: 'rgba(255,255,255,0.04)' }}
-                >
-                  {/* Avatar circle */}
+                  style={{ background: 'rgba(255,255,255,0.04)' }}>
                   <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white"
                     style={{ background: 'linear-gradient(to right, #8B5CF6, #10B981)' }}>
                     {username[0].toUpperCase()}
@@ -101,7 +101,6 @@ export function Nav() {
                   </div>
                   <span className={cn('text-white/40 text-xs transition-transform', isUserDropdownOpen && 'rotate-180')}>▼</span>
                 </button>
-
                 {isUserDropdownOpen && (
                   <div className="absolute right-0 top-full mt-2 glassmorphic-premium rounded-lg border border-white/15 py-2 min-w-[180px] shadow-2xl animate-fade-in">
                     <Link href="/membership" className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all">
@@ -111,10 +110,8 @@ export function Nav() {
                       🎮 My Contests
                     </Link>
                     <div className="border-t border-white/10 mt-1 pt-1">
-                      <button
-                        onClick={() => signOut()}
-                        className="block w-full text-left px-4 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/5 transition-all"
-                      >
+                      <button onClick={() => signOut()}
+                        className="block w-full text-left px-4 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/5 transition-all">
                         Sign Out
                       </button>
                     </div>
@@ -123,8 +120,7 @@ export function Nav() {
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <Link href="/sign-in"
-                  className="nav-label text-xs text-white/60 hover:text-white transition-colors px-3 py-2">
+                <Link href="/sign-in" className="nav-label text-xs text-white/60 hover:text-white transition-colors px-3 py-2">
                   Sign In
                 </Link>
                 <Link href="/sign-up"
@@ -147,8 +143,8 @@ export function Nav() {
         {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden pb-4 border-t border-white/5">
-            {/* User status on mobile */}
-            {isLoggedIn && (
+            {/* Mobile user status */}
+            {!loading && isLoggedIn && (
               <div className="px-4 py-3 border-b border-white/10 mb-2 flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white"
                   style={{ background: 'linear-gradient(to right, #8B5CF6, #10B981)' }}>
@@ -191,11 +187,9 @@ export function Nav() {
             </div>
 
             <div className="px-4 pt-2 pb-2 border-t border-white/10 mt-2">
-              {isLoggedIn ? (
-                <button
-                  onClick={() => { signOut(); setIsOpen(false) }}
-                  className="w-full font-mono uppercase tracking-widest text-red-400 text-xs py-3 rounded-lg font-bold border border-red-500/20 hover:bg-red-500/5 transition-all"
-                >
+              {!loading && isLoggedIn ? (
+                <button onClick={() => { signOut(); setIsOpen(false) }}
+                  className="w-full font-mono uppercase tracking-widest text-red-400 text-xs py-3 rounded-lg font-bold border border-red-500/20 hover:bg-red-500/5 transition-all">
                   Sign Out
                 </button>
               ) : (
