@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { Layout } from '@/components/layout'
+import { useAuth } from '@/hooks/use-auth'
 import { Card } from '@/components/card'
 
 const GRADIENT = 'linear-gradient(to right, #8B5CF6, #10B981)'
@@ -14,6 +14,7 @@ const games = ['Madden 25', 'Call of Duty', 'NBA 2K', 'FIFA', 'Fortnite', 'Valor
 
 export default function SignUp() {
   const router = useRouter()
+  const { signIn } = useAuth()
   const [step, setStep] = useState(1)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -66,6 +67,27 @@ export default function SignUp() {
     // Small delay to show loading state, then show success instantly
     // (API call will be re-enabled once database is connected)
     await new Promise((resolve) => setTimeout(resolve, 600))
+
+    // Save to localStorage so sign-in can find this account
+    const stored = localStorage.getItem('squadup_registrations')
+    const registrations = stored ? JSON.parse(stored) : []
+    registrations.push({
+      username: form.username,
+      email: form.email,
+      password: form.password,
+      firstName: form.firstName,
+      lastName: form.lastName,
+    })
+    localStorage.setItem('squadup_registrations', JSON.stringify(registrations))
+
+    // Auto sign-in after registration
+    signIn({
+      username: form.username,
+      email: form.email,
+      firstName: form.firstName,
+      lastName: form.lastName,
+      membershipTier: 'free',
+    })
 
     setNewUsername(form.username)
     setSubmitted(true)
