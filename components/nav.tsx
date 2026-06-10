@@ -34,9 +34,6 @@ export function Nav() {
     { href: '/games/fifa', label: 'FIFA' },
   ]
 
-  const username = 'Player'
-  const tier = 'free'
-
   const tierColors: Record<string, string> = {
     free: '#9ca3af',
     starter: '#34d399',
