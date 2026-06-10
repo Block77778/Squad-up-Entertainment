@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/use-auth'
+import { Layout } from '@/components/layout'
 import { Card } from '@/components/card'
 
 const GRADIENT = 'linear-gradient(to right, #8B5CF6, #10B981)'
