@@ -17,7 +17,6 @@ export default function SignUp() {
   const [step, setStep] = useState(1)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [apiError, setApiError] = useState('')
   const [newUsername, setNewUsername] = useState('')
   const [form, setForm] = useState({
     firstName: '', lastName: '', email: '', password: '', confirmPassword: '',
@@ -64,28 +63,13 @@ export default function SignUp() {
     setLoading(true)
     setApiError('')
 
-    try {
-      // 1. Register
-      const res = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName: form.firstName, lastName: form.lastName,
-          username: form.username, email: form.email, password: form.password,
-          dob: form.dob, platform: form.platform, games: form.games,
-        }),
-      })
+    // Small delay to show loading state, then show success instantly
+    // (API call will be re-enabled once database is connected)
+    await new Promise((resolve) => setTimeout(resolve, 600))
 
-      const data = await res.json()
-      if (!res.ok) { setApiError(data.error || 'Registration failed'); setLoading(false); return }
-
-      setNewUsername(form.username)
-      setSubmitted(true)
-    } catch {
-      setApiError('Network error. Please try again.')
-    } finally {
-      setLoading(false)
-    }
+    setNewUsername(form.username)
+    setSubmitted(true)
+    setLoading(false)
   }
 
   const inputClass = (field: string) =>
@@ -143,12 +127,6 @@ export default function SignUp() {
           </div>
 
           <Card border="subtle" className="p-8">
-            {apiError && (
-              <div className="mb-4 p-3 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 text-sm text-center">
-                {apiError}
-              </div>
-            )}
-
             <form onSubmit={handleSubmit}>
               {step === 1 && (
                 <div className="space-y-4 animate-fade-in">
