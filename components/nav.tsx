@@ -142,7 +142,13 @@ export function Nav() {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-white/5">
+          <div
+            className="md:hidden pb-4 border-t border-white/5 overflow-y-auto"
+            style={{
+              maxHeight: 'calc(100dvh - 64px)',
+              WebkitOverflowScrolling: 'touch',
+            } as React.CSSProperties}
+          >
             {/* Mobile user status */}
             {!loading && isLoggedIn && (
               <div className="px-4 py-3 border-b border-white/10 mb-2 flex items-center gap-3">
