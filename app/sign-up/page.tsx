@@ -57,7 +57,7 @@ export default function SignUp() {
     return Object.keys(e).length === 0
   }
 
-  const handleNext = () => { if (validateStep1()) { setApiError(''); setStep(2) } }
+  const handleNext = () => { if (validateStep1()) { setErrors({}); setStep(2) } }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
