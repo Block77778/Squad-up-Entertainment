@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/use-auth'
+import { useAuth, registerAccount } from '@/hooks/use-auth'
 import { Layout } from '@/components/layout'
 import { Card } from '@/components/card'
 
@@ -63,25 +63,23 @@ export default function SignUp() {
     e.preventDefault()
     if (!validateStep2()) return
     setLoading(true)
-    setApiError('')
 
-    // Small delay to show loading state, then show success instantly
-    // (API call will be re-enabled once database is connected)
-    await new Promise((resolve) => setTimeout(resolve, 600))
-
-    // Save to localStorage so sign-in can find this account
-    const stored = localStorage.getItem('squadup_registrations')
-    const registrations = stored ? JSON.parse(stored) : []
-    registrations.push({
+    // Register with hashed password — checks for duplicate email/username
+    const result = await registerAccount({
       username: form.username,
       email: form.email,
-      password: form.password,
       firstName: form.firstName,
       lastName: form.lastName,
+      password: form.password,
     })
-    localStorage.setItem('squadup_registrations', JSON.stringify(registrations))
 
-    // Auto sign-in after registration
+    if (!result.success) {
+      setErrors({ form: result.error || 'Registration failed.' })
+      setLoading(false)
+      return
+    }
+
+    // Auto sign-in after successful registration
     signIn({
       username: form.username,
       email: form.email,
@@ -195,6 +193,11 @@ export default function SignUp() {
               {step === 2 && (
                 <div className="space-y-5 animate-fade-in">
                   <p className="text-xs font-mono uppercase tracking-widest text-text-muted mb-6">Step 2 — Gaming Profile</p>
+                  {errors.form && (
+                    <div className="p-3 rounded-lg border border-red-500/30 bg-red-500/10 text-red-400 text-sm text-center">
+                      {errors.form}
+                    </div>
+                  )}
                   <div>
                     <label className="text-xs font-mono uppercase tracking-widest text-text-muted mb-1 block">Date of Birth</label>
                     <input className={inputClass('dob')} type="date" value={form.dob} onChange={(e) => update('dob', e.target.value)} />
