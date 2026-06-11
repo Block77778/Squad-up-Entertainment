@@ -3,15 +3,14 @@
 import React, { useState, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { Layout } from '@/components/layout'
 import { Card } from '@/components/card'
-import { useAuth } from '@/hooks/use-auth'
+import { useAuth, loginAccount } from '@/hooks/use-auth'
 
 const GRADIENT = 'linear-gradient(to right, #8B5CF6, #10B981)'
 
 function SignInForm() {
-  const router = useRouter()
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackUrl') || '/'
   const { signIn } = useAuth()
@@ -30,37 +29,20 @@ function SignInForm() {
       setError('Please enter your email and password.')
       return
     }
-    if (form.password.length < 8) {
-      setError('Password must be at least 8 characters.')
-      return
-    }
 
     setLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 500))
 
-    // Check if user registered in this session
-    const stored = localStorage.getItem('squadup_registrations')
-    const registrations = stored ? JSON.parse(stored) : []
-    const match = registrations.find(
-      (r: any) => r.email.toLowerCase() === form.email.toLowerCase() && r.password === form.password
-    )
+    // Verify credentials against stored hashed passwords
+    const result = await loginAccount(form.email, form.password)
 
-    if (!match && registrations.length > 0) {
-      setError('Invalid email or password.')
+    if (!result.success || !result.user) {
+      setError(result.error || 'Invalid email or password.')
       setLoading(false)
       return
     }
 
-    // Sign in — use registered data if found, otherwise use email as username
-    signIn({
-      username: match?.username || form.email.split('@')[0],
-      email: form.email,
-      firstName: match?.firstName || '',
-      lastName: match?.lastName || '',
-      membershipTier: 'free',
-    })
-
-    // Use window.location for a clean full-page navigation so nav re-reads localStorage
+    signIn(result.user)
+    // Full page reload so nav re-reads localStorage immediately
     window.location.href = callbackUrl
   }
 
@@ -101,7 +83,7 @@ function SignInForm() {
           <button type="submit" disabled={loading}
             className="w-full font-mono uppercase tracking-widest text-white text-sm py-3 rounded-lg font-bold transition-all hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
             style={{ background: GRADIENT, boxShadow: '0 4px 20px rgba(139,92,246,0.4)' }}>
-            {loading ? 'Signing In...' : 'Sign In'}
+            {loading ? 'Verifying...' : 'Sign In'}
           </button>
         </form>
         <p className="text-center text-xs text-text-muted mt-6">
